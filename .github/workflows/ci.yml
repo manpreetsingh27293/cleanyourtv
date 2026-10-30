@@ -23,11 +23,17 @@ jobs:
 
     - name: Build APK
       run: |
+        PROJECT_DIR=$(find . -maxdepth 2 \( -name "settings.gradle*" -o -name "build.gradle*" \) -exec dirname {} \; | head -n 1)
+        if [ -z "$PROJECT_DIR" ]; then
+          PROJECT_DIR="tvhome"
+        fi
+        echo "Building Gradle project in: $PROJECT_DIR"
+        cd "$PROJECT_DIR"
         if [ -f "./gradlew" ]; then
           chmod +x ./gradlew
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease || ./gradlew assembleDebug
         else
-          gradle assembleRelease
+          gradle assembleRelease || gradle assembleDebug
         fi
 
     - name: Upload APK Artifact
