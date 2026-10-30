@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- HOME SCREEN -->
+    <LinearLayout
+        android:id="@+id/home_screen_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/glass_card_bg"
+            android:padding="8dp">
+            <Button android:id="@+id/tab_home" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:focusable="true" />
+            <Button android:id="@+id/tab_apps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Apps" android:focusable="true" />
+            <Button android:id="@+id/tab_settings" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Settings" android:focusable="true" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/app_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- PHONE-STYLE LOCK SCREEN OVERLAY -->
+    <RelativeLayout
+        android:id="@+id/lock_screen_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000"
+        android:visibility="visible">
+
+        <TextClock
+            android:id="@+id/lock_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:format12Hour="hh:mm"
+            android:textColor="#FFFFFF"
+            android:textSize="90sp" />
+
+        <TextView
+            android:id="@+id/unlock_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lock_clock"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/glass_card_bg"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:text="Press [OK] to unlock"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</FrameLayout>
